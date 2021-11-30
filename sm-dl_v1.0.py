@@ -1,5 +1,7 @@
-# SM-DL V1
+# SM-DL v1.0
+# Social Media downloader
 # INFO TO EDIT
+#
 SPREADSHEET_ID = '1T3tc1aEwdpMEg0KH-x6zkfO8UvQgpB3GiKzeBbTDNvc'
 TAB = "1st Event"
 START_ROW = 2
