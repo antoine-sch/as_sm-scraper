@@ -12,36 +12,27 @@ from googleapiclient.discovery import build
 from google.oauth2 import service_account
 import os
 import datetime
-#import sys
-#from IPython.core import ultratb
-#from traitlets.traitlets import Undefined
-#sys.excepthook = ultratb.FormattedTB(mode='Verbose', color_scheme='Linux', call_pdb=False)
 
-
-# OTHER VARIABLES
+# INIT
+currentdatetime = datetime.datetime.now().strftime("%Y%m%d%H%M%S");
+os.system('ls')
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
 SERVICE_ACCOUNT_FILE = 'keys-joneslola794.json'
 RANGES = TAB+"!A1:R"+str(END_ROW+1)
-
 ROWNUM_ID = None
 LINK_ID = None
 STATUS_ID = None
 
-# INIT
-currentdatetime = datetime.datetime.now().strftime("%Y%m%d%H%M%S");
+# INIT GOOGLE SHEETS API
 creds = None
 creds = service_account.Credentials.from_service_account_file(
         SERVICE_ACCOUNT_FILE, scopes=SCOPES)
 service = build('sheets', 'v4', credentials=creds)
-# INIT SHEETS API
 sheet = service.spreadsheets()
 result = sheet.values().get(spreadsheetId=SPREADSHEET_ID,
                             range=RANGES).execute()
-
 values = result.get('values', [])
 
-# INIT OS
-os.system('ls')
 
 def colnum_string(n):
     string = ""
