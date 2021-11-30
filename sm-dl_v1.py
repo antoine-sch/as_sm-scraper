@@ -1,11 +1,11 @@
 # SM-DL v1.0
 # Social Media downloader
+
 # INFO TO EDIT
-#
 SPREADSHEET_ID = '1T3tc1aEwdpMEg0KH-x6zkfO8UvQgpB3GiKzeBbTDNvc'
 TAB = "1st Event"
 START_ROW = 2
-END_ROW = 100
+END_ROW = 20
 # INFO TO EDIT (END)
 
 from googleapiclient.discovery import build
@@ -43,9 +43,8 @@ def colnum_string(n):
 
 colnum_string(28)
 
-# SEARCH FOR ID AND LINK COLUMN
+# SEARCH IN GOOGLE SHEET FOR 'ID', 'LINK' and 'STATUS' COLUMN
 for y in range(0, len(values[0])):
-
     if "ID" == values[0][y]:
         #print("> ID COLUMN FOUND")
         ROWNUM_ID = y
@@ -58,7 +57,7 @@ for y in range(0, len(values[0])):
         #print("> STATUS COLUMN FOUND")
         STATUS_ID = y
 
-
+# IF ANY OF THE COLUMN MISSES, RETURN ERROR - IF NOT CONTINUE
 if ROWNUM_ID == None or LINK_ID == None or STATUS_ID == None:
     print("ERROR: your sheet misses one of these columns: ID, LINK and STATUS.")
 else:
