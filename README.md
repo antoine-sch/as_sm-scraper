@@ -1,14 +1,18 @@
-# Setup your Python Environment
+# ABOUT SM-DL
 
-1. Install Pycharm (Community), or Visual Studio Code, or whatever code editor you like to use.
+# INSTALL
+
+## A / Setup your Python Environment
+
+1. Install Pycharm (Community), or Visual Studio Code, or whatever code editor you like to use:
 https://www.jetbrains.com/fr-fr/pycharm/download/#section=mac
 
-2. Install Python 3 : 
+2. Install Python 3:
 https://www.python.org/downloads/
 
-3. In the folder installed, run the command "Install Certificates.command"
+3. In the folder installed, run the command "Install Certificates.command":
 
-4. Download the package from Github (via the "Code" green button > Download Zip) 
+4. Download the package from Github (via the "Code" green button > Download Zip). 
 https://github.com/antoine-sch/sm-dl
 
 5. Unzip it and store it in a convenient location (Like a "Python Scripts" folder in your Projects folder)
@@ -20,7 +24,7 @@ https://github.com/antoine-sch/sm-dl
 8. Pycharm should prompt you on top to install requirements. Do it.
 
 
-# Setup your Google Sheet
+## B / Setup your Google Sheet
 
 1. Check that your Google Sheet isn't at XLSX format. (If so, there is a green "XLSX" icon next to the title. Then you should go to File > Save as Google Sheet, and work with the new file.)
 
@@ -30,7 +34,7 @@ https://github.com/antoine-sch/sm-dl
 
 4. Copy the ID of the document from the URL
 
-# Setup the script
+## C / Run the script
 
 1. Back to Pycharm, look to the top left "Project" panel, and double-click on "sm-dl_V1.py"
 
