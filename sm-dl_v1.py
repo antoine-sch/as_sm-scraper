@@ -3,7 +3,7 @@
 
 # INFO TO EDIT
 SPREADSHEET_ID = 'XXXX'
-TAB = "XXXX"
+TAB_LABEL = "XXXX"
 START_ROW = 2
 END_ROW = 20
 # INFO TO EDIT (END)
@@ -18,7 +18,7 @@ currentdatetime = datetime.datetime.now().strftime("%Y%m%d%H%M%S");
 os.system('ls')
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
 SERVICE_ACCOUNT_FILE = 'keys-joneslola794.json'
-RANGES = TAB+"!A1:R"+str(END_ROW+1)
+RANGES = TAB_LABEL+"!A1:R"+str(END_ROW+1)
 ROWNUM_ID = None
 LINK_ID = None
 STATUS_ID = None
@@ -70,7 +70,7 @@ else:
         try:
             len(values[x][LINK_ID])
             if "http" in values[x][LINK_ID]:
-                command = 'youtube-dl -o\"' + TAB + " - " + currentdatetime + "/" + values[x][ROWNUM_ID] + ' %(upload_date)s.E' + str(x) + '.%(ext)s\"' + ' ' + values[x][LINK_ID]
+                command = 'youtube-dl -o\"' + TAB_LABEL + " - " + currentdatetime + "/" + values[x][ROWNUM_ID] + ' %(upload_date)s.E' + str(x) + '.%(ext)s\"' + ' ' + values[x][LINK_ID]
                 resultRequest = os.system(command)
                 if resultRequest == 0:
                     status_to_update = "SAVED"
@@ -81,6 +81,6 @@ else:
                 status_to_update = "!! NO URL !!"
             # UPDATE STATUS
         request = sheet.values().update(spreadsheetId=SPREADSHEET_ID,
-                                            range=TAB + "!" + colnum_string(STATUS_ID + 1) + str(x + 1),
+                                            range=TAB_LABEL + "!" + colnum_string(STATUS_ID + 1) + str(x + 1),
                                             valueInputOption="USER_ENTERED",
                                             body={"values": [[status_to_update]]}).execute()
