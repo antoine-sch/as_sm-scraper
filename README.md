@@ -1,5 +1,7 @@
 # ABOUT SM-DL
 
+SM-DL is a script designed to automaticaly download lists of social media clips (photo or video), cataloged in Google Sheet documents.
+
 # INSTALL
 
 ## A / Setup your Python Environment
