@@ -2,8 +2,8 @@
 # Social Media downloader
 
 # INFO TO EDIT
-SPREADSHEET_ID = '1T3tc1aEwdpMEg0KH-x6zkfO8UvQgpB3GiKzeBbTDNvc'
-TAB = "1st Event"
+SPREADSHEET_ID = 'XXXX'
+TAB = "XXXX"
 START_ROW = 2
 END_ROW = 20
 # INFO TO EDIT (END)
