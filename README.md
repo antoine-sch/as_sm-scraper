@@ -21,9 +21,9 @@ https://github.com/antoine-sch/sm-dl
 
 6. Open Pycharm. On the welcome screen, click Open, and select the folder. 
 
-7. When Creating Virtual Environment prompted, select Python 3. Install the thing if it asks for it.
+7. When Creating Virtual Environment prompted, select Python 3. Install things if it asks for.
 
-8. Pycharm should prompt you on top to install requirements. Do it.
+8. If you don't get the prompting, install the requirements in the Terminal tab (bottom), using the command: pip3 install -r requirements.txt
 
 
 ## B / Setup your Google Sheet
