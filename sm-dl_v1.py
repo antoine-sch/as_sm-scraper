@@ -1,4 +1,4 @@
-# SM-DL v1.0
+# SM-DL v1.1
 # Social Media downloader
 
 # INFO TO EDIT
@@ -12,6 +12,7 @@ from googleapiclient.discovery import build
 from google.oauth2 import service_account
 import os
 import datetime
+import urllib.request
 
 # INIT
 currentdatetime = datetime.datetime.now().strftime("%Y%m%d%H%M%S");
@@ -68,14 +69,21 @@ else:
 
         status_to_update = "x"
         try:
-            len(values[x][LINK_ID])
-            if "http" in values[x][LINK_ID]:
-                command = 'youtube-dl -o\"' + TAB_LABEL + " - " + currentdatetime + "/" + values[x][ROWNUM_ID] + ' %(upload_date)s.E' + str(x) + '.%(ext)s\"' + ' ' + values[x][LINK_ID]
-                resultRequest = os.system(command)
-                if resultRequest == 0:
-                    status_to_update = "SAVED"
+            theLink = values[x][LINK_ID]
+            if "http" in theLink:
+                if ".jpg" in theLink or ".jpeg" in theLink:
+                    #This segment could be improved
+                    status_to_update = "SAVED (JPG)"
+                    urllib.request.urlretrieve(theLink,
+                                                TAB_LABEL + " - " + currentdatetime + "/" + values[x][ROWNUM_ID] + ".jpg")
                 else:
-                    status_to_update = "!! ERROR !!"
+                    command = 'youtube-dl -o\"' + TAB_LABEL + " - " + currentdatetime + "/" + values[x][ROWNUM_ID] + ' %(upload_date)s.E' + str(x) + '.%(ext)s\"' + ' ' + theLink
+                    resultRequest = os.system(command)
+                    if resultRequest == 0:
+                        status_to_update = "SAVED"
+                    else:
+                        status_to_update = "!! ERROR !!"
+
         except:
                 print("[ERROR] No url here: " + values[x][ROWNUM_ID])
                 status_to_update = "!! NO URL !!"
