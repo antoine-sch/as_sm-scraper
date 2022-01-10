@@ -71,44 +71,45 @@ else:
     # START LOOP
     status_to_update = "x"
     for x in range(START_ROW-1, END_ROW):
-        status_to_update = "x"
-        try:
-            len(values[x][LINK_ID])
-            # LOOP FOR TELEGRAM
-            if "https://t.me/" in values[x][LINK_ID]:
-                print("Telegram video processing…")
-                with TelegramClient(telethon_api_name, api_id, api_hash) as client:
-                    trimmedTelegramUrl = (values[x][LINK_ID].split("https://t.me/", 1)[1]) # return what's after the begining of the url
-                    infoFromTelegramUrl = trimmedTelegramUrl.split("/") # return a array with user ID and message ID
-                    msg = client.get_messages(infoFromTelegramUrl[0], ids=int(infoFromTelegramUrl[1]))
-                    msg_date = str(msg.date)[0:10] #get the first 10 char from the date,
-                    msg_date = msg_date.replace('-','')
-                    #msg_date3 = msg_date2
-                    if msg != None:
-                        rqst = msg.download_media(file=os.path.join(TAB + " - " + currentdatetime , values[x][ROWNUM_ID]+ ' ' + msg_date))
-                        if rqst == None:
-                            status_to_update = "! No media"
+        status_to_update = ""
+        # Test if the line is filled
+        if len(values[x]) < LINK_ID: # If link field isn't filled, don't run the engine
+            status_to_update = "-"
+        else:
+            try:
+                # LOOP FOR TELEGRAM
+                if "https://t.me/" in values[x][LINK_ID]:
+                    print("Telegram: video processing…")
+                    with TelegramClient(telethon_api_name, api_id, api_hash) as client:
+                        trimmedTelegramUrl = (values[x][LINK_ID].split("https://t.me/", 1)[1]) # return what's after the begining of the url
+                        infoFromTelegramUrl = trimmedTelegramUrl.split("/") # return a array with user ID and message ID
+                        msg = client.get_messages(infoFromTelegramUrl[0], ids=int(infoFromTelegramUrl[1]))
+                        msg_date = str(msg.date)[0:10] #get the first 10 char from the date,
+                        msg_date = msg_date.replace('-','')
+                        if msg != None:
+                            rqst = msg.download_media(file=os.path.join(TAB + " - " + currentdatetime , values[x][ROWNUM_ID]+ ' ' + msg_date))
+                            if rqst == None:
+                                status_to_update = "! No media"
+                            else:
+                                status_to_update = "SAVED"
                         else:
-                            status_to_update = "SAVED"
+                            mess_return = "Wrong link"
+                        print("Telegram: " + status_to_update)
+                elif "http" in values[x][LINK_ID]:
+                    # LOOP FOR YOUTUBE-DL
+                    command = 'youtube-dl -o\"' + TAB + " - " + currentdatetime + "/" + values[x][ROWNUM_ID] + ' %(upload_date)s' + '.%(ext)s\"' + ' ' + values[x][LINK_ID]
+                    resultRequest = os.system(command)
+                    if resultRequest == 0:
+                        status_to_update = "SAVED"
                     else:
-                        mess_return = "Wrong link"
-                    print("Telegram : " + status_to_update)
-            elif "http" in values[x][LINK_ID]:
-                # LOOP FOR YOUTUBE-DL
-                command = 'youtube-dl -o\"' + TAB + " - " + currentdatetime + "/" + values[x][ROWNUM_ID] + ' %(upload_date)s' + '.%(ext)s\"' + ' ' + values[x][LINK_ID]
-                resultRequest = os.system(command)
-                if resultRequest == 0:
-                    status_to_update = "SAVED"
-                else:
-                    status_to_update = "!! ERROR !!"
-        except:
-                if values[x][LINK_ID] == "":
-                    print("[ERROR] No url here: " + values[x][ROWNUM_ID])
-                    status_to_update = "!! NO URL !!"
-                else:
-                    print("[ERROR] Problem: " + values[x][ROWNUM_ID])
-                    status_to_update = "!! PROBLEM !!"
-            # UPDATE STATUS
+                        status_to_update = "!! ERROR !!"
+            except:
+                    if values[x][LINK_ID] == "":
+                        print("[ERROR] No url here: " + values[x][ROWNUM_ID])
+                        status_to_update = "!! NO URL !!"
+                    else:
+                        print("[ERROR] Problem: " + values[x][ROWNUM_ID])
+                        status_to_update = "!! PROBLEM !!"
         request = sheet.values().update(spreadsheetId=SPREADSHEET_ID,
                                             range=TAB + "!" + colnum_string(STATUS_ID + 1) + str(x + 1),
                                             valueInputOption="USER_ENTERED",
