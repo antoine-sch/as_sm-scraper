@@ -13,12 +13,6 @@ import os
 import datetime
 from telethon.sync import TelegramClient
 
-# CODES TELETHON
-api_id = ###
-api_hash = '###'
-telethon_api_name = '###'
-
-
 # INIT
 currentdatetime = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
 os.system('ls')
@@ -36,9 +30,13 @@ creds = service_account.Credentials.from_service_account_file(
 service = build('sheets', 'v4', credentials=creds)
 sheet = service.spreadsheets()
 result = sheet.values().get(spreadsheetId=SPREADSHEET_ID,
-                            range=RANGES).execute()
+         range=RANGES).execute()
 values = result.get('values', [])
 
+# INIT TELETHON
+api_id = ###
+api_hash = '###'
+telethon_api_name = '###'
 
 def colnum_string(n):
     string = ""
