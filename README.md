@@ -6,10 +6,6 @@ SM-DL is a script designed to automaticaly download lists of social media clips 
 
 -1.2: script handles Telegram links (with Telethon library)
 
-# NOTES
-
--If errors, notably with Instagram, try without VPN
-
 # INSTALL
 
 ## A / Setup your Python Environment
