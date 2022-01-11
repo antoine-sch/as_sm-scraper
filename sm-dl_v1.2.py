@@ -38,6 +38,7 @@ api_id = ###
 api_hash = '###'
 telethon_api_name = '###'
 
+
 def colnum_string(n):
     string = ""
     while n > 0:
@@ -75,8 +76,7 @@ else:
             status_to_update = "-"
         else:
             #First, look if it hasn't been saved already:
-            if len(values[x]) > STATUS_ID:
-                if values[x][STATUS_ID] == "SAVED":
+            if len(values[x]) > STATUS_ID and values[x][STATUS_ID] == "SAVED":
                     print("## " + values[x][ROWNUM_ID] + "… already saved.")
             else:
                 try:
