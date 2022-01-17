@@ -36,7 +36,7 @@ https://github.com/antoine-sch/sm-dl
 
 2. Share the document with this address, and give Editing rights : sm-dl-875@sm-dl-333110.iam.gserviceaccount.com
 
-3. Make sure your sheet has columns labelled that way: ID, LINK and STATUS 
+3. Make sure your sheet has columns labelled that way: ID, LINK and SAVED 
 
 4. Copy the ID of the document from the URL
 
