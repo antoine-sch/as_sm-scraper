@@ -34,7 +34,7 @@ https://github.com/antoine-sch/sm-dl
 
 1. Check that your Google Sheet isn't at XLSX format. (If so, there is a green "XLSX" icon next to the title. Then you should go to File > Save as Google Sheet, and work with the new file.)
 
-2. Share the document with this address, and give Editing rights : sm-dl-875@sm-dl-333110.iam.gserviceaccount.com
+2. Share the document with this address, and give Editing rights : [ask AS]
 
 3. Make sure your sheet has columns labelled that way: ID, LINK and SAVED 
 
