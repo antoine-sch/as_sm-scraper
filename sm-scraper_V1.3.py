@@ -134,7 +134,7 @@ else:
                         if "tiktok.com" in values[x][LINK_ID]: # LOOP FOR TIKTOK
                             #tiktok_scraper.
                             print(" …Tiktok…")
-                            driver = webdriver.Chrome('chromedriver', chrome_options=options)
+                            driver = webdriver.Chrome('chromedriver 4', chrome_options=options)
                             driver.get(values[x][LINK_ID])
                             res = driver.page_source
                             driver.quit()
@@ -157,7 +157,7 @@ else:
                         if "tiktok.com" in values[x][LINK_ID]: # LOOP FOR TIKTOK
                             #tiktok_scraper.
                             print("     …Tiktok…")
-                            driver = webdriver.Chrome('chromedriver', chrome_options=options)
+                            driver = webdriver.Chrome('chromedriver 4', chrome_options=options)
                             driver.get(values[x][LINK_ID])
                             res = driver.page_source
                             driver.quit()
