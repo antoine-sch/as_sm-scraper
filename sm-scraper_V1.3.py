@@ -20,7 +20,7 @@ options.add_argument('--disable-gpu')  # Last I checked this was necessary.
 currentdatetime = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
 
 
-# SM-SCRAPER v1.2
+# SM-SCRAPER v1.3
 # Social Media scraper
 
 #Needs 'ID', 'LINK' and 'SAVED' COLUMN
@@ -134,7 +134,7 @@ else:
                         if "tiktok.com" in values[x][LINK_ID]: # LOOP FOR TIKTOK
                             #tiktok_scraper.
                             print(" …Tiktok…")
-                            driver = webdriver.Chrome('/Users/davien79/Downloads/chromedriver 4', chrome_options=options)
+                            driver = webdriver.Chrome('chromedriver', chrome_options=options)
                             driver.get(values[x][LINK_ID])
                             res = driver.page_source
                             driver.quit()
@@ -157,7 +157,7 @@ else:
                         if "tiktok.com" in values[x][LINK_ID]: # LOOP FOR TIKTOK
                             #tiktok_scraper.
                             print("     …Tiktok…")
-                            driver = webdriver.Chrome('/Users/davien79/Downloads/chromedriver 4', chrome_options=options)
+                            driver = webdriver.Chrome('chromedriver', chrome_options=options)
                             driver.get(values[x][LINK_ID])
                             res = driver.page_source
                             driver.quit()
